@@ -1,0 +1,22 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Model files (too large for git)
+models/tinyllama.gguf
+models/faiss_index.bin
+models/chunk_metadata.pkl
+
+# Data (PDFs — add your own)
+data/papers/*.pdf
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
