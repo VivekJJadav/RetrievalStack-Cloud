@@ -5,3 +5,4 @@ __pycache__/
 .gitignore
 *.md
 src/test.py
+.env

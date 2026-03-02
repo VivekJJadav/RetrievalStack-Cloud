@@ -7,12 +7,14 @@ __pycache__/
 *.pyo
 
 # Model files (too large for git)
-models/tinyllama.gguf
 models/faiss_index.bin
 models/chunk_metadata.pkl
 
 # Data (PDFs — add your own)
 data/papers/*.pdf
+
+# Environment variables
+.env
 
 # IDE
 .vscode/

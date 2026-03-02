@@ -1,10 +1,5 @@
 FROM python:3.10-slim
 
-# Install build tools needed by llama-cpp-python
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc g++ cmake make && \
-    rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
 
 COPY requirements.txt .
