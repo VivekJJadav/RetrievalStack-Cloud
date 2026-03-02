@@ -1,13 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from retriever import Retriever
-from generator import Generator
 import time
 
 app = FastAPI()
 
-# Lazy-load: models load on first request, not at startup
-# This prevents Render's port scan timeout on free tier
+# Fully lazy-load: don't even import retriever/generator at module level.
+# Importing them triggers sentence_transformers → torch loading, which is
+# too slow on Render free tier (0.1 CPU) and causes port scan timeout.
 _retriever = None
 _generator = None
 
@@ -15,6 +14,7 @@ _generator = None
 def get_retriever():
     global _retriever
     if _retriever is None:
+        from retriever import Retriever
         _retriever = Retriever()
     return _retriever
 
@@ -22,6 +22,7 @@ def get_retriever():
 def get_generator():
     global _generator
     if _generator is None:
+        from generator import Generator
         _generator = Generator()
     return _generator
 
